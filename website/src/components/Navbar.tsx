@@ -81,7 +81,7 @@ export default function Navbar() {
 							initial={false}
 							animate={{
 								// Usar apenas marginTop conforme solicitado (sem scale)
-								marginTop: isShrunk ? 0 : -12,
+								marginTop: isShrunk ? 0 : 20,
 							}}
 							transition={springTransition}
 							className="flex items-center z-50"
