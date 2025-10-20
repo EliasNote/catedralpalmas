@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { motion, Transition } from "framer-motion";
-import NavbarOptions from "./Navbar/NavbarOptions";
+import NavbarOptions from "./NavbarOptions";
 
 export default function Navbar() {
 	const pathname = usePathname();
