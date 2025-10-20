@@ -22,9 +22,9 @@ export default function RootLayout({
 	children,
 }: Readonly<{ children: React.ReactNode }>) {
 	return (
-		<html lang="ptbr">
+		<html lang="pt-BR">
 			<body
-				className={`${interSans.variable} ${geistMono.variable} antialiased`}
+				className={`${interSans.variable} ${geistMono.variable} antialiased font-sans`}
 			>
 				<Navbar />
 				<div>{children}</div>

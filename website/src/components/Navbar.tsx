@@ -56,10 +56,10 @@ export default function Navbar() {
 						...springTransition,
 						boxShadow: { duration: 0.25 },
 					}}
-					style={{ maxWidth: "100%" }}
-					className={`mx-auto h-[${navHeigth}px] flex items-center`}
+					style={{ maxWidth: "100%", height: `${navHeigth}px` }}
+					className="mx-auto flex items-center overflow-visible"
 				>
-					<div className="w-full mx-auto flex items-center justify-center px-5">
+					<div className="w-full mx-auto flex items-center justify-center px-5 relative">
 						{navLeft.map(({ href, label }) => (
 							<motion.span
 								key={href}
@@ -75,10 +75,12 @@ export default function Navbar() {
 
 						<motion.div
 							animate={{
-								marginTop: isShrunk ? 0 : 20,
+								// leve transição de posição; negativo para "atravessar" a barra
+								y: isShrunk ? 0 : -12,
+								scale: isShrunk ? 0.9 : 1,
 							}}
 							transition={springTransition}
-							className="flex-shrink-0 flex items-center"
+							className="flex-shrink-0 flex items-center z-50"
 						>
 							<Link href="/">
 								<Image
@@ -87,7 +89,7 @@ export default function Navbar() {
 									width={88}
 									height={88}
 									quality={100}
-									className="rounded-full mx-1.5"
+									className="rounded-full mx-1.5 drop-shadow-md"
 								/>
 							</Link>
 						</motion.div>
