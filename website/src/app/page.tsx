@@ -19,13 +19,12 @@ export default function Home() {
 		},
 	];
 
-	const heigth = 1080;
-
 	return (
 		<section>
 			<div className="relative flex w-full">
-				{" "}
-				{/* Removi h-screen */}
+				<h1 className="absolute top-[42%] left-1/2 z-30 -translate-x-1/2 -translate-y-1/2 text-white text-[50px] text-center font-bold pointer-events-none">
+					Catedral do Senhor Bom Jesus da Coluna
+				</h1>
 				{images.map(({ src, margin }, idx) => (
 					<motion.div
 						key={idx}
