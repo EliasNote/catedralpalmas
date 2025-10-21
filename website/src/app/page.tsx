@@ -21,14 +21,16 @@ export default function Home() {
 
 	return (
 		<section>
-			<div className="relative flex w-full">
-				<h1 className="absolute top-[calc(100vh/2)] left-1/2 z-30 -translate-x-1/2 -translate-y-1/2 text-white text-[50px] text-center font-bold pointer-events-none">
+			<div className="relative flex w-fit">
+				<h1 className="absolute top-[calc(100vh/2)] left-1/2 z-30 -translate-x-1/2 -translate-y-1/2 text-white text-[50px] text-center font-bold pointer-events-none w-screen">
 					Catedral do Senhor Bom Jesus da Coluna
 				</h1>
 				{images.map(({ src, margin }, idx) => (
 					<motion.div
 						key={idx}
-						className="w-1/3"
+						className={`w-full lg:w-1/3 ${idx === 2 ? "hidden lg:block" : ""} ${
+							idx === 0 ? "hidden sm:block" : ""
+						}`}
 						initial={{ marginTop: margin }}
 						animate={{ marginTop: 0 }}
 						transition={{
@@ -44,7 +46,7 @@ export default function Home() {
 							alt="Brasão"
 							width={640}
 							height={1080}
-							className="object-cover w-full"
+							className="object-cover h-screen"
 						/>
 					</motion.div>
 				))}

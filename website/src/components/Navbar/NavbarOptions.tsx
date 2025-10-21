@@ -22,7 +22,7 @@ export default function NavbarOptions({
 						backgroundColor: "#e4e4e4",
 					}}
 					transition={springTransition}
-					className="px-[14px] py-[8px] cursor-pointer rounded-[2px]"
+					className="px-[10px] lg:px-[14px] py-[8px] cursor-pointer rounded-[2px]"
 				>
 					<Link href={href} className="font-bold">
 						{label}
