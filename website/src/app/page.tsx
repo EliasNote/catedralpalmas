@@ -19,56 +19,37 @@ export default function Home() {
 		},
 	];
 
+	const heigth = 1080;
+
 	return (
 		<section>
-			<div className="relative flex w-full h-fit">
-				<>
-					{images.map(({ src, margin }, idx) => (
-						<motion.div
-							key={idx}
-							className="w-1/3 h-screen"
-							initial={{
-								marginTop: margin,
-							}}
-							animate={{
-								marginTop: 0,
-							}}
-							transition={{
-								type: "spring",
-								stiffness: 300,
-								damping: 50,
-								delay: 0.5,
-								duration: 2,
-							}}
-						>
-							<Image
-								src={src}
-								alt="Brasão"
-								width={640}
-								height={1080}
-								className="object-cover h-full w"
-							/>
-						</motion.div>
-					))}
-				</>
-				{/* Noise overlay SVG */}
-				<svg className="pointer-events-none absolute inset-0 w-full h-full z-10">
-					<filter id="grain">
-						<feTurbulence
-							type="fractalNoise"
-							baseFrequency="0.9"
-							numOctaves="4"
-							result="noise"
+			<div className="relative flex w-full">
+				{" "}
+				{/* Removi h-screen */}
+				{images.map(({ src, margin }, idx) => (
+					<motion.div
+						key={idx}
+						className="w-1/3"
+						initial={{ marginTop: margin }}
+						animate={{ marginTop: 0 }}
+						transition={{
+							type: "spring",
+							stiffness: 300,
+							damping: 50,
+							delay: 0.5,
+							duration: 2,
+						}}
+					>
+						<Image
+							src={src}
+							alt="Brasão"
+							width={640}
+							height={1080}
+							className="object-cover w-full"
 						/>
-						<feColorMatrix in="noise" type="saturate" values="0" />
-						<feFlood floodColor="#000000" result="color" />
-						<feComposite
-							in="color"
-							in2="noise"
-							operator="in"
-							result="colored"
-						/>
-					</filter>
+					</motion.div>
+				))}
+				<svg className="pointer-events-none absolute inset-0 w-full h-full z-2">
 					<rect
 						width="100%"
 						height="100%"
