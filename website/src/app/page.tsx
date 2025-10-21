@@ -1,38 +1,57 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Home() {
+	const images = [
+		{
+			src: "/hero1.png",
+			margin: "-100%",
+		},
+		{
+			src: "/hero2.png",
+			margin: "100%",
+		},
+		{
+			src: "/hero3.png",
+			margin: "-100%",
+		},
+	];
+
 	return (
 		<section>
-			<div
-				className="relative flex w-full"
-				style={{ height: "calc(100vh + 10vh)" }}
-			>
-				<Image
-					src="/hero1.png"
-					alt="Brasão"
-					width={640}
-					height={1080}
-					className="object-cover"
-					style={{ height: "100%" }}
-				/>
-				<Image
-					src="/hero2.png"
-					alt="Brasão"
-					width={640}
-					height={1080}
-					className="object-cover"
-					style={{ height: "100%" }}
-				/>
-				<Image
-					src="/hero3.png"
-					alt="Brasão"
-					width={640}
-					height={1080}
-					className="object-cover"
-					style={{ height: "100%" }}
-				/>
+			<div className="relative flex w-full h-fit">
+				<>
+					{images.map(({ src, margin }, idx) => (
+						<motion.div
+							key={idx}
+							className="h-fit"
+							initial={{
+								marginTop: margin,
+							}}
+							animate={{
+								marginTop: 0,
+							}}
+							transition={{
+								type: "spring",
+								stiffness: 300,
+								damping: 50,
+								delay: 0.5,
+								duration: 2,
+							}}
+						>
+							<Image
+								src={src}
+								alt="Brasão"
+								width={640}
+								height={1080}
+								className="object-cover h-full"
+								style={{ height: "100%" }}
+							/>
+						</motion.div>
+					))}
+				</>
 				{/* Noise overlay SVG */}
 				<svg className="pointer-events-none absolute inset-0 w-full h-full z-10">
 					<filter id="grain">

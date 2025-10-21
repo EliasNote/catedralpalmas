@@ -24,7 +24,9 @@ export default function NavbarOptions({
 					transition={springTransition}
 					className="px-[14px] py-[8px] cursor-pointer rounded-[2px]"
 				>
-					<Link href={href}>{label}</Link>
+					<Link href={href} className="font-bold">
+						{label}
+					</Link>
 				</motion.span>
 			))}
 		</>
