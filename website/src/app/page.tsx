@@ -50,12 +50,23 @@ export default function Home() {
 					</motion.div>
 				))}
 				<svg className="pointer-events-none absolute inset-0 w-full h-full z-2">
-					<rect
-						width="100%"
-						height="100%"
-						filter="url(#grain)"
-						opacity="0.45"
-					/>
+					<filter id="grain">
+						<feTurbulence
+							type="fractalNoise"
+							baseFrequency="0.9"
+							numOctaves="4"
+							result="noise"
+						/>
+						<feColorMatrix in="noise" type="saturate" values="0" />
+						<feFlood floodColor="#000000" result="color" />
+						<feComposite
+							in="color"
+							in2="noise"
+							operator="in"
+							result="colored"
+						/>
+					</filter>
+					<rect width="100%" height="100%" filter="url(#grain)" opacity="0.6" />
 				</svg>
 			</div>
 		</section>
