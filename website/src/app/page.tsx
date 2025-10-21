@@ -26,7 +26,7 @@ export default function Home() {
 					{images.map(({ src, margin }, idx) => (
 						<motion.div
 							key={idx}
-							className="h-fit"
+							className="w-1/3 h-screen"
 							initial={{
 								marginTop: margin,
 							}}
@@ -46,8 +46,7 @@ export default function Home() {
 								alt="Brasão"
 								width={640}
 								height={1080}
-								className="object-cover h-full"
-								style={{ height: "100%" }}
+								className="object-cover h-full w"
 							/>
 						</motion.div>
 					))}
