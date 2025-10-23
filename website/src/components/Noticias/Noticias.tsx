@@ -1,5 +1,5 @@
 import type { Noticia } from "@/types";
-import NoticiaCard from "./Noticias/NoticiaCard";
+import NoticiaCard from "./NoticiaCard";
 
 export default function Noticias({ noticias }: { noticias: Noticia[] }) {
 	return (

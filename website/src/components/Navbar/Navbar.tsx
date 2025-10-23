@@ -5,29 +5,16 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { motion, Transition } from "framer-motion";
 import NavbarOptions from "./NavbarOptions";
+import { NAV_LEFT, NAV_RIGHT, NAV_HEIGHT } from "@/constants";
 
 export default function Navbar() {
 	const pathname = usePathname();
 	const [scrolled, setScrolled] = useState(false);
-	const navHeigth = 70;
 	const springTransition: Transition = {
 		type: "spring",
 		stiffness: 300,
 		damping: 30,
 	};
-
-	const navLeft = [
-		{ href: "/", label: "Início" },
-		{ href: "/eventos", label: "Eventos" },
-		{ href: "/horarios", label: "Horários" },
-		{ href: "/noticias", label: "Notícias" },
-	];
-	const navRight = [
-		{ href: "/sobre", label: "Sobre" },
-		{ href: "/galeria", label: "Galeria" },
-		{ href: "/contato", label: "Contato" },
-		{ href: "/oracoes", label: "Orações" },
-	];
 
 	useEffect(() => {
 		if (pathname !== "/") return;
@@ -50,7 +37,7 @@ export default function Navbar() {
 					animate={{
 						width: isShrunk ? "max-content" : "100%",
 						borderRadius: isShrunk ? 100 : 0,
-						boxShadow: isShrunk ? "var(--navbar-shadow)" : "none",
+						boxShadow: isShrunk ? "0 16px 300px rgba(0,0,0,0.3)" : "none",
 						backgroundColor: "#ffffff",
 					}}
 					transition={{
@@ -59,14 +46,14 @@ export default function Navbar() {
 					}}
 					style={{
 						maxWidth: "100%",
-						height: `${navHeigth}px`,
+						height: `${NAV_HEIGHT}px`,
 						overflow: "visible",
 					}}
 					className="mx-auto flex items-center border"
 				>
 					<div className="w-full mx-auto flex items-center justify-center px-5">
 						<NavbarOptions
-							options={navLeft}
+							options={NAV_LEFT}
 							springTransition={springTransition}
 						/>
 
@@ -92,7 +79,7 @@ export default function Navbar() {
 						</motion.div>
 
 						<NavbarOptions
-							options={navRight}
+							options={NAV_RIGHT}
 							springTransition={springTransition}
 						/>
 					</div>

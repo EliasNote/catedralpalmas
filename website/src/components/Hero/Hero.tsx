@@ -1,20 +1,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
-
-const images = [
-	{
-		src: "/hero1.png",
-		margin: "-100%",
-	},
-	{
-		src: "/hero2.png",
-		margin: "100%",
-	},
-	{
-		src: "/hero3.png",
-		margin: "-100%",
-	},
-];
+import { HERO_IMAGES } from "@/constants";
 
 export default function Hero() {
 	return (
@@ -23,7 +9,7 @@ export default function Hero() {
 				<h1 className="absolute top-[calc(100vh/2)] left-1/2 z-30 -translate-x-1/2 -translate-y-1/2 text-white pointer-events-none max-w-[90vw]">
 					Catedral do Senhor Bom Jesus da Coluna
 				</h1>
-				{images.map(({ src, margin }, idx) => (
+				{HERO_IMAGES.map(({ src, margin }, idx) => (
 					<motion.div
 						key={idx}
 						className={`w-full lg:w-1/3 ${idx === 2 ? "hidden lg:block" : ""} ${

@@ -1,9 +1,9 @@
-import { Noticia } from "@/app/page";
+import type { Noticia } from "@/types";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-export default function NoticiaComponent({
+export default function NoticiaCard({
 	noticia,
 	width,
 	length,

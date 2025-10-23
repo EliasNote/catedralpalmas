@@ -1,18 +1,20 @@
 import { motion, Transition } from "framer-motion";
 import Link from "next/link";
 
-type Option = {
-	href: string;
-	label: string;
-};
+interface NavOption {
+	readonly href: string;
+	readonly label: string;
+}
+
+interface NavbarOptionsProps {
+	options: readonly NavOption[];
+	springTransition: Transition;
+}
 
 export default function NavbarOptions({
 	options,
 	springTransition,
-}: {
-	options: Option[];
-	springTransition: Transition;
-}) {
+}: NavbarOptionsProps) {
 	return (
 		<>
 			{options.map(({ href, label }) => (

@@ -1,4 +1,4 @@
-import EventoCard from "./Eventos/EventoCard";
+import EventoCard from "./EventoCard";
 import { motion, Variants } from "framer-motion";
 
 // 	id: string;

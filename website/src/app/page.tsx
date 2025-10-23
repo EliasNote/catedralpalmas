@@ -1,46 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
-import Noticias from "@/components/Noticias";
-import Eventos from "@/components/Eventos";
-import Hero from "@/components/Hero";
-
-export type Noticia = {
-	src: string;
-	titulo: string;
-	descricao: string;
-};
+import { Hero, Noticias, Eventos } from "@/components";
+import { noticiasData } from "@/constants";
 
 export default function Home() {
-	const noticias: Noticia[] = [
-		{
-			src: "/not2.png",
-			titulo: "Celebração do Ano Jubilar na Catedral",
-			descricao:
-				"asodnasdn aosidnasdba isudaisdb iausbd aui sduasdbuaisdbasyudbaisudb uyasd",
-		},
-		{
-			src: "/not3.png",
-			titulo: "Celebração do Ano Jubilar na Catedral",
-			descricao:
-				"asodnasdn aosidnasdba isudaisdb iausbd aui sduasdbuaisdbasyudbaisudb uyasd",
-		},
-		{
-			src: "/not4.png",
-			titulo:
-				"Celebração do Ano Jubilar na Catedral asdinas asdn oaisdb iuasbdyasbdyasdu",
-			descricao:
-				"asodnasdn aosidnasdba isudaisdb iausbd aui sduasdbuaisdbasyudbaisudb uyasd",
-		},
-		{
-			src: "/not5.png",
-			titulo: "Celebração do Ano Jubilar na Catedral",
-			descricao:
-				"asodnasdn aosidnasdba isudaisdb iausbd aui sduasdbuaisdbasyudbaisudb uyasd",
-		},
-	];
-
 	return (
 		<section>
 			<Hero />
@@ -51,7 +15,7 @@ export default function Home() {
 				height={422}
 				className="my-[40px] h-[422px]"
 			/>
-			<Noticias noticias={noticias} />
+			<Noticias noticias={noticiasData} />
 			<Image
 				src={"/christ2.svg"}
 				alt="Brasão"
