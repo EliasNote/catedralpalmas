@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import { Navbar } from "@/components";
 
 const interSans = Inter({
 	variable: "--font-inter-sans",
@@ -22,6 +22,20 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
 	return (
 		<html lang="pt-BR">
+			<head>
+				{/* Preconnect para Google Fonts para melhor performance */}
+				<link rel="preconnect" href="https://fonts.googleapis.com" />
+				<link
+					rel="preconnect"
+					href="https://fonts.gstatic.com"
+					crossOrigin="anonymous"
+				/>
+				{/* eslint-disable-next-line @next/next/no-page-custom-font */}
+				<link
+					href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700&display=swap"
+					rel="stylesheet"
+				/>
+			</head>
 			<body className={`${interSans.variable} antialiased font-inter-sans`}>
 				<Navbar />
 				<div>{children}</div>
