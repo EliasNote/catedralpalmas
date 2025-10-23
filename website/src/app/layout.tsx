@@ -1,19 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter, Big_Shoulders } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 
 const interSans = Inter({
 	variable: "--font-inter-sans",
-	subsets: ["latin"],
-});
-const bigShoulders = Big_Shoulders({
-	variable: "--font-big-shoulders",
-	subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
 	subsets: ["latin"],
 });
 
@@ -27,9 +18,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
 	return (
 		<html lang="pt-BR">
-			<body
-				className={`${interSans.variable} ${geistMono.variable} ${bigShoulders.variable} antialiased font-sans`}
-			>
+			<body className={`${interSans.variable} antialiased font-inter-sans`}>
 				<Navbar />
 				<div>{children}</div>
 			</body>

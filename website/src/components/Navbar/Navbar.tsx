@@ -50,7 +50,7 @@ export default function Navbar() {
 					animate={{
 						width: isShrunk ? "max-content" : "100%",
 						borderRadius: isShrunk ? 100 : 0,
-						boxShadow: isShrunk ? "0 8px 30px rgba(0,0,0,0.08)" : "none",
+						boxShadow: isShrunk ? "var(--navbar-shadow)" : "none",
 						backgroundColor: "#ffffff",
 					}}
 					transition={{
@@ -62,7 +62,7 @@ export default function Navbar() {
 						height: `${navHeigth}px`,
 						overflow: "visible",
 					}}
-					className="mx-auto flex items-center"
+					className="mx-auto flex items-center border"
 				>
 					<div className="w-full mx-auto flex items-center justify-center px-5">
 						<NavbarOptions
