@@ -1,3 +1,5 @@
+"use client";
+
 import type { Noticia } from "@/types";
 import Image from "next/image";
 import { motion } from "framer-motion";

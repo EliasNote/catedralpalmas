@@ -1,3 +1,5 @@
+"use client";
+
 import EventoCard from "./EventoCard";
 import { motion, Variants } from "framer-motion";
 
