@@ -12,3 +12,15 @@ export interface Evento {
 	location: string;
 	image: string;
 }
+
+export interface Location {
+	id: string;
+	name: string;
+	schedules: Schedule[];
+}
+
+export interface Schedule {
+	id: string;
+	date: Date;
+	hours: string[];
+}

@@ -1,7 +1,7 @@
 export const NAV_LEFT = [
 	{ href: "/", label: "Início" },
 	{ href: "/eventos", label: "Eventos" },
-	{ href: "/horarios", label: "Horários" },
+	{ href: "/calendario", label: "Calendário" },
 	{ href: "/noticias", label: "Notícias" },
 ] as const;
 

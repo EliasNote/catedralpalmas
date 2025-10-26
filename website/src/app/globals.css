@@ -31,13 +31,19 @@
 	* {
 		@apply border-border outline-ring/50;
 	}
+	html {
+		scrollbar-gutter: stable;
+	}
 	body {
-		@apply bg-background text-foreground;
+		margin-right: 0 !important;
 	}
 	h1 {
 		@apply text-[50px] text-center font-bold;
 	}
 	h2 {
-		@apply text-[42px] text-center mb-8 font-inter-sans font-medium;
+		@apply text-[36px] text-center mb-5 font-inter-sans font-medium;
+	}
+	h3 {
+		@apply text-[22px] text-center mb-5 font-inter-sans font-bold;
 	}
 }

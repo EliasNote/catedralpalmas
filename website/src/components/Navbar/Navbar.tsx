@@ -37,7 +37,7 @@ export default function Navbar() {
 					animate={{
 						width: isShrunk ? "max-content" : "100%",
 						borderRadius: isShrunk ? 100 : 0,
-						boxShadow: isShrunk ? "0 16px 300px rgba(0,0,0,0.3)" : "none",
+						boxShadow: isShrunk ? "0 16px 300px rgba(0,0,0,0.05)" : "none",
 						backgroundColor: "#ffffff",
 					}}
 					transition={{
@@ -73,7 +73,7 @@ export default function Navbar() {
 									width={88}
 									height={88}
 									quality={100}
-									className="rounded-full mx-1.5 drop-shadow-md"
+									className="rounded-full mx-1.5"
 								/>
 							</Link>
 						</motion.div>

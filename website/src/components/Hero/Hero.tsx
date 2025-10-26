@@ -29,10 +29,14 @@ export default function Hero() {
 					>
 						<Image
 							src={src}
-							alt="Brasão"
+							alt="Imagem da Catedral"
 							width={640}
 							height={1080}
-							className="object-cover h-screen"
+							className="object-cover h-screen w-full"
+							priority={idx === 1}
+							onError={(e) => {
+								console.error(`Error loading image: ${src}`);
+							}}
 						/>
 					</motion.div>
 				))}
