@@ -2,8 +2,15 @@ import Image from "next/image";
 
 export default function Footer() {
 	return (
-		<section className="w-full mt-[-100px] flex flex-col items-center">
-			<div className="max-w-[1280px] flex gap-3">
+		<section className="relative w-full h-[820px] flex flex-col items-center">
+			<Image
+				src="/footer-background.png"
+				alt="Background"
+				fill
+				className="object-cover absolute inset-0 -z-10"
+				priority
+			/>
+			{/* <div className="max-w-[1280px] flex gap-3">
 				<Image
 					src="/brasao.png"
 					alt="Brasão"
@@ -40,7 +47,7 @@ export default function Footer() {
 					<span>Tecnologia:</span>
 					<span>🎯</span>
 				</div>
-			</div>
+			</div> */}
 		</section>
 	);
 }

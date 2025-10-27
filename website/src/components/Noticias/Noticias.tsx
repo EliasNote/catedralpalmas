@@ -3,10 +3,16 @@
 import type { Noticia } from "@/types";
 import NoticiaCard from "./NoticiaCard";
 
-export default function Noticias({ noticias }: { noticias: Noticia[] }) {
+export default function Noticias({
+	noticias,
+	className,
+}: {
+	noticias: Noticia[];
+	className: string;
+}) {
 	return (
 		<>
-			<div className="font-big-shoulders">
+			<section className={`font-big-shoulders ${className}`}>
 				<h2>Notícias</h2>
 				<div className="flex max-w-[1280px] w-full gap-[20px] m-auto">
 					<NoticiaCard noticia={noticias[0]} width={600} length={600} />
@@ -18,7 +24,7 @@ export default function Noticias({ noticias }: { noticias: Noticia[] }) {
 						</div>
 					</div>
 				</div>
-			</div>
+			</section>
 		</>
 	);
 }

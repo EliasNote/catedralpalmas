@@ -1,5 +1,6 @@
 "use client";
 
+import { EVENTS } from "@/constants/events";
 import EventoCard from "./EventoCard";
 import { motion, Variants } from "framer-motion";
 
@@ -23,7 +24,7 @@ import { motion, Variants } from "framer-motion";
 //     category: "Pastoral",
 // }
 
-export default function Eventos() {
+export default function Eventos({ className }: { className: string }) {
 	const container: Variants = {
 		hidden: {},
 		show: {
@@ -44,24 +45,46 @@ export default function Eventos() {
 	};
 
 	return (
-		<section>
+		<section className={`w-full  max-w-[1280px] ${className}`}>
 			<h2>Próximos Eventos</h2>
 			<motion.div
-				className="w-full max-w-[1280px] m-auto flex flex-row justify-between gap-5"
+				className="w-full flex flex-row flex-wrap justify-center gap-2"
 				variants={container}
 				initial="hidden"
 				whileInView="show"
 				viewport={{ once: true, amount: 0.2 }}
 			>
-				<motion.div variants={item} whileHover={{ scale: 1.02 }}>
+				{EVENTS.map((e, k) => (
+					<motion.div
+						key={k}
+						variants={item}
+						whileHover={{ scale: 1.02 }}
+						className="flex-1 min-w-[250px]"
+					>
+						<EventoCard event={e} />
+					</motion.div>
+				))}
+				{/* <motion.div
+					variants={item}
+					whileHover={{ scale: 1.02 }}
+					className="flex-1 min-w-[250px]"
+				>
 					<EventoCard />
 				</motion.div>
-				<motion.div variants={item} whileHover={{ scale: 1.02 }}>
+				<motion.div
+					variants={item}
+					whileHover={{ scale: 1.02 }}
+					className="flex-1 min-w-[250px]"
+				>
 					<EventoCard />
 				</motion.div>
-				<motion.div variants={item} whileHover={{ scale: 1.02 }}>
+				<motion.div
+					variants={item}
+					whileHover={{ scale: 1.02 }}
+					className="flex-1 min-w-[250px]"
+				>
 					<EventoCard />
-				</motion.div>
+				</motion.div> */}
 			</motion.div>
 		</section>
 	);

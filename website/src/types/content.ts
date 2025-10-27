@@ -13,6 +13,15 @@ export interface Evento {
 	image: string;
 }
 
+export interface Event {
+	id: string;
+	imageUrl: string;
+	title: string;
+	date: Date;
+	hour: string;
+	location: string;
+}
+
 export interface Location {
 	id: string;
 	name: string;

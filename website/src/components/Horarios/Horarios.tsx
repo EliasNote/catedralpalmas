@@ -12,7 +12,7 @@ import {
 
 import { useEffect, useState, useMemo } from "react";
 
-export default function Horarios() {
+export default function Horarios({ className }: { className: string }) {
 	const standardLocation = "catedral";
 
 	const [selectedLocation, setSelectedLocation] = useState(standardLocation);
@@ -56,8 +56,8 @@ export default function Horarios() {
 
 	return (
 		<>
-			<section className="mx-auto">
-				<h2>Celebrações da week</h2>
+			<section className={`${className}`}>
+				<h2>Celebrações da Semana</h2>
 				<div className="w-full max-w-82 mb-2 mt-[-10px]">
 					<Select value={selectedLocation} onValueChange={setSelectedLocation}>
 						<SelectTrigger className="w-full">
