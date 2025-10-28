@@ -8,16 +8,10 @@ export default function Home() {
 	return (
 		<section className="flex flex-col gap-[60px] items-center">
 			<Hero />
-			<Image
-				src={"/christ1.svg"}
-				alt="Brasão"
-				width={1920}
-				height={422}
-				className=" h-[422px]"
-			/>
+			<Image src={"/christ1.png"} alt="Brasão" fill />
 			<Noticias noticias={noticiasData} className={"mx-2"} />
 			<Image
-				src={"/christ2.svg"}
+				src={"/christ2.png"}
 				alt="Brasão"
 				width={1920}
 				height={664}
