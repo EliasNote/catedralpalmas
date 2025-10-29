@@ -5,29 +5,66 @@ import { Hero, Noticias, Eventos, Horarios, Footer } from "@/components";
 import { noticiasData } from "@/constants";
 
 export default function Home() {
-	return (
-		<section className="flex flex-col gap-[60px] items-center">
-			<Hero />
-			<Image src={"/christ1.png"} alt="Brasão" fill />
-			<Noticias noticias={noticiasData} className={"mx-2"} />
-			<Image
-				src={"/christ2.png"}
-				alt="Brasão"
-				width={1920}
-				height={664}
-				className=" h-[664px]"
-			/>
-			<Eventos className={"mx-2"} />
-			<Horarios className={"mx-2"} />
-			<Image
-				src={"/christ3.png"}
-				alt="Brasão"
-				width={1920}
-				height={1080}
-				quality={100}
-				className=" w-[1920px] m-auto"
-			/>
-			<Footer />
-		</section>
-	);
+  const mx = "mx-2";
+  return (
+    <section className="flex flex-col gap-[60px] items-center">
+      <Hero />
+      <div className="relative w-full flex justify-center overflow-hidden">
+        <p className="absolute  left-4 md:left-8 lg:left-16 xl:left-80 top-1/2 -translate-y-1/2 text-justify text-white text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl max-w-[80%] sm:max-w-[400px] md:max-w-[400px] lg:max-w-[550px] px-2 z-10 font-playfair-display text-shadow-custom font-bold">
+          Ele tomou sobre si as nossas enfermidades, e carregou com as nossas
+          dores.
+          <br />
+          <br />
+          Isaías 53:4
+        </p>
+        <Image
+          src={"/christ1.png"}
+          width={1920}
+          height={1180}
+          quality={100}
+          className="w-full h-[1180px] object-cover object-center"
+          alt="Cristo carregando a cruz"
+        />
+      </div>
+      <Noticias noticias={noticiasData} className={mx} />
+      <div className="relative w-full flex justify-center overflow-hidden">
+        <p className="absolute left-4 md:left-8 lg:left-16 xl:left-80 top-1/2 -translate-y-1/2 text-justify text-white text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl max-w-[80%] sm:max-w-[400px] md:max-w-[400px] lg:max-w-[550px] px-2 z-10 font-playfair-display text-shadow-custom font-bold">
+          Porque Deus tanto amou o mundo que deu o seu Filho Unigênito, para que
+          todo o que nele crer não pereça, mas tenha a vida eterna.
+          <br />
+          <br />
+          João 3:16
+        </p>
+        <Image
+          src={"/christ2.png"}
+          alt="Cristo"
+          width={1920}
+          height={1180}
+          quality={100}
+          className="w-full h-[1180px] object-cover object-center"
+        />
+      </div>
+      <Eventos className={mx} />
+      <Horarios className={mx} />
+      <div className="relative w-full flex justify-center overflow-hidden">
+        <p className="absolute left-4 md:left-8 lg:left-16 xl:left-50 top-1/2 -translate-y-1/2 text-justify text-white text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl max-w-[80%] sm:max-w-[400px] md:max-w-[400px] lg:max-w-[550px] px-2 z-10 font-playfair-display text-shadow-custom font-bold">
+          E o sétimo anjo tocou a sua trombeta, e houve no céu grandes vozes,
+          que diziam: Os reinos do mundo vieram a ser de nosso Senhor e do seu
+          Cristo, e ele reinará para todo o sempre.
+          <br />
+          <br />
+          Apocalipse 11:15
+        </p>
+        <Image
+          src={"/christ3.png"}
+          alt="Cristo"
+          width={1920}
+          height={1180}
+          quality={100}
+          className="w-full h-[1180px] object-cover object-center"
+        />
+      </div>
+      <Footer className={mx} />
+    </section>
+  );
 }

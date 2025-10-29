@@ -3,47 +3,60 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-	--font-inter-sans: var(--font-inter-sans);
-	--font-big-shoulders: "Big Shoulders Display", sans-serif;
-	--color-background: var(--background);
-	--color-foreground: var(--foreground);
-	--font-mono: var(--font-geist-mono);
-	/* restore tokens used by utilities */
-	--color-border: var(--border);
-	--color-ring: var(--ring);
+  --font-inter-sans: var(--font-inter-sans);
+  --font-playfair-display: var(--font-playfair-display);
+  --font-big-shoulders: "Big Shoulders Display", sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-mono: var(--font-geist-mono);
+  /* restore tokens used by utilities */
+  --color-border: var(--border);
+  --color-ring: var(--ring);
 }
 
 :root {
-	--text-muted: #64748b; /* Tailwind slate-600 */
-	/* base color variables */
-	--background: oklch(1 0 0);
-	--foreground: oklch(0.145 0 0);
-	--border: #e5e7eb; /* Tailwind border default */
-	--ring: #3b82f6; /* Tailwind ring default */
-	/* navbar */
-	/* Tailwind shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.05) */
-	--navbar-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --text-muted: #64748b; /* Tailwind slate-600 */
+  /* base color variables */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --border: #e5e7eb; /* Tailwind border default */
+  --ring: #3b82f6; /* Tailwind ring default */
+  /* navbar */
+  /* Tailwind shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.05) */
+  --navbar-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  /* custom text shadow */
+  --text-shadow-custom: 0 2px 2px rgba(0, 0, 0, 1);
+  /* custom hr color */
+  --hr-color: #161a1d;
 }
 
 /* Removed empty .dark block to avoid linter warnings */
 
 @layer base {
-	* {
-		@apply border-border outline-ring/50;
-	}
-	html {
-		scrollbar-gutter: stable;
-	}
-	body {
-		margin-right: 0 !important;
-	}
-	h1 {
-		@apply text-[50px] text-center font-bold;
-	}
-	h2 {
-		@apply text-[36px] text-center mb-5 font-inter-sans font-medium;
-	}
-	h3 {
-		@apply text-[22px] text-center mb-5 font-inter-sans font-bold;
-	}
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scrollbar-gutter: stable;
+  }
+  body {
+    margin-right: 0 !important;
+  }
+  h1 {
+    @apply text-[50px] text-center font-bold;
+  }
+  h2 {
+    @apply text-[36px] text-center mb-5 font-inter-sans font-medium;
+  }
+  h3 {
+    @apply text-[22px] text-center mb-5 font-inter-sans font-bold;
+  }
+}
+
+.text-shadow-custom {
+  text-shadow: var(--text-shadow-custom);
+}
+
+.hr-custom-color {
+  background-color: var(--hr-color) !important;
 }
