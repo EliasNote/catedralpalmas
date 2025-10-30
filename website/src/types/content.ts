@@ -1,7 +1,11 @@
+export type NoticiaCategoria = "grande" | "normal";
+
 export interface Noticia {
 	src: string;
 	titulo: string;
 	descricao: string;
+	categoria: NoticiaCategoria;
+	data: Date;
 }
 
 export interface Evento {

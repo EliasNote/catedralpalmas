@@ -1,2 +1,2 @@
 export { default } from "./Noticias";
-export { default as NoticiaCard } from "./NoticiaCard";
+export { default as NoticiaCard } from "./NoticiaNormalCard";
