@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { Noticia } from "@/types";
 
 export default function NoticiaCard({ noticia }: { noticia: Noticia }) {
   const [hovered, setHovered] = useState(false);
