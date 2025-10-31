@@ -95,7 +95,7 @@ export default function NoticiaGrandeCard({
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
 
-      <div className="p-10 absolute inset-0 text-left max-w-[620px] flex flex-col gap-4">
+      <div className="p-10 absolute bottom-0 text-left max-w-[620px] flex flex-col gap-4">
         {/* Título */}
         <h3 className="text-lg text-white text-left mb-0">{noticia.titulo}</h3>
 
@@ -132,8 +132,12 @@ export default function NoticiaGrandeCard({
       )}
 
       {/* Next and Prev Buttons */}
-      <button className="absolute inset-0"></button>
-      <button className="absolute inset-0"></button>
+      {hovered && (
+        <>
+          <button className="absolute rounded-full bg-white/40 w-12 h-12 top-1/2"></button>
+          <button className="absolute rounded-full bg-white/40 w-12 h-12 top-1/2 right-0"></button>
+        </>
+      )}
     </div>
   );
 }
