@@ -39,17 +39,17 @@ export default function NoticiaCard({ noticia }: { noticia: Noticia }) {
       {/* Conteúdo */}
       <div className="p-5 flex-1 flex flex-col">
         {/* Título */}
-        <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2 transition-colors">
+        <h3 className="text-lg text-gray-900 mb-2 line-clamp-2 transition-colors">
           {noticia.titulo}
         </h3>
 
         {/* Descrição */}
-        <p className="text-sm text-gray-600 mb-4 line-clamp-3 flex-1">
+        <p className="text-md text-gray-600 mb-4 line-clamp-3 flex-1">
           {noticia.descricao}
         </p>
 
         {/* Data */}
-        <div className="flex items-center text-xs text-gray-500 mt-auto">
+        <div className="flex text-sm items-center text-gray-500 mt-auto">
           <Image
             src="/calendar.svg"
             alt="Calendário"

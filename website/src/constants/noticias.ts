@@ -41,4 +41,20 @@ export const noticiasData: Noticia[] = [
     categoria: "normal",
     data: new Date(2025, 8, 28), // 28 de setembro
   },
+  {
+    src: "/not1.jpg",
+    titulo: "Missa Especial Celebra o Dia da Padroeira",
+    descricao:
+      "A comunidade se reuniu para celebrar uma missa especial em homenagem à padroeira da Catedral, com participação de fiéis e apresentação do coral.",
+    data: new Date(2024, 5, 10), // 10 de junho de 2024
+    categoria: "grande",
+  },
+  {
+    src: "/not1.jpg",
+    titulo: "Voluntários Realizam Ação Solidária no Centro",
+    descricao:
+      "Grupo de voluntários da paróquia distribuiu alimentos e roupas para famílias em situação de vulnerabilidade, reforçando o compromisso social da igreja.",
+    data: new Date(2024, 5, 5), // 5 de junho de 2024
+    categoria: "grande",
+  },
 ];
