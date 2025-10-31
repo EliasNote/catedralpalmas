@@ -126,7 +126,7 @@ export default function Footer({ className }: { className: string }) {
           </div>
         </div>
       </div>
-      <p className="text-center">
+      <p className="text-center mx-4">
         ® 2025 - Catedral do Senhor Bom Jesus da Coluna - Palmas - PR.
       </p>
     </section>

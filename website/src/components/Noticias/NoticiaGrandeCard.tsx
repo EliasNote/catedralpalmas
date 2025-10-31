@@ -124,7 +124,12 @@ export default function NoticiaGrandeCard({
             <motion.div
               animate={{ width: index === activeIndex ? 30 : 10 }}
               key={index}
-              onClick={() => setActiveIndex(index)}
+              onClick={() => {
+                if (index !== activeIndex) {
+                  setDirection(index > activeIndex ? 1 : -1);
+                  setActiveIndex(index);
+                }
+              }}
               className={`w-[10px] h-[10px] cursor-pointer ${index === activeIndex ? "bg-white" : "bg-white/50"} rounded-full`}
             />
           ))}
@@ -134,8 +139,31 @@ export default function NoticiaGrandeCard({
       {/* Next and Prev Buttons */}
       {hovered && (
         <>
-          <button className="absolute rounded-full bg-white/40 w-12 h-12 top-1/2"></button>
-          <button className="absolute rounded-full bg-white/40 w-12 h-12 top-1/2 right-0"></button>
+          <button
+            className="absolute cursor-pointer rounded-full bg-white/40 hover:bg-white/50 w-14 h-14 top-[calc(50%-25px)] left-4 flex items-center justify-center"
+            onClick={prev}
+          >
+            <Image
+              src="/arrow-button.svg"
+              alt="Seta Esquerda"
+              width={40}
+              height={40}
+              className="invert"
+            />
+          </button>
+          <button
+            className="absolute cursor-pointer rounded-full bg-white/40 hover:bg-white/50 w-14 h-14 top-[calc(50%-25px)] right-4 flex items-center justify-center"
+            onClick={next}
+          >
+            {" "}
+            <Image
+              src="/arrow-button.svg"
+              alt="Seta Direita"
+              width={40}
+              height={40}
+              className="invert -scale-x-100"
+            />
+          </button>
         </>
       )}
     </div>
