@@ -138,7 +138,7 @@ export default function NoticiaGrandeCard({
 
       {/* Next and Prev Buttons */}
       {hovered && (
-        <>
+        <div className="hidden md:block">
           <button
             className="absolute cursor-pointer rounded-full bg-white/40 hover:bg-white/50 w-14 h-14 top-[calc(50%-25px)] left-4 flex items-center justify-center"
             onClick={prev}
@@ -164,7 +164,7 @@ export default function NoticiaGrandeCard({
               className="invert -scale-x-100"
             />
           </button>
-        </>
+        </div>
       )}
     </div>
   );

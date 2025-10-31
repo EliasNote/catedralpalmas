@@ -9,31 +9,28 @@ import {
   FaFacebook,
   FaInstagram,
 } from "react-icons/fa";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 export default function Footer({ className }: { className: string }) {
   const title = "text-[22px] font-bold text-left mb-1";
   const iconSize1 = 20;
   const iconSize2 = 23;
-  const is1060 = useMediaQuery("(max-width: 1060px)");
-  const is550 = useMediaQuery("(max-width: 550px)");
 
   return (
     <section
       className={`w-full flex flex-col items-center gap-[50px] my-4 mt-15 ${className}`}
     >
-      {is1060 && (
+      <div className="block xl:hidden">
         <Image
           src="/brasao.png"
           alt="Brasão"
-          width={120}
-          height={120}
+          width={150}
+          height={150}
           quality={100}
           className="rounded-full w-[150px] h-[150px]"
         />
-      )}
+      </div>
       <div className={`flex gap-[40px] max-w-[1280px] ${className}`}>
-        {!is1060 && (
+        <div className="hidden xl:block min-w-[150px] min-h-[150px]">
           <Image
             src="/brasao.png"
             alt="Brasão"
@@ -42,12 +39,10 @@ export default function Footer({ className }: { className: string }) {
             quality={100}
             className="rounded-full w-[150px] h-[150px]"
           />
-        )}
-        <div className="flex items-center gap-[40px] w-full">
+        </div>
+        <div className="flex items-center gap-[40px] w-fit">
           <div
-            className={`flex ${
-              is550 ? "flex-col" : "flex-wrap"
-            } gap-[40px] w-fit justify-center`}
+            className={`flex flex-col flex-wrap sm:flex-row gap-[30px] w-fit justify-center`}
           >
             <div className="w-70">
               <h2 className={title}>{CATEDRAL_INFO.name}</h2>
