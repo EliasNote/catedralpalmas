@@ -1,97 +1,321 @@
-import { Location } from "@/types";
+import { Location, ScheduleEventType, ScheduleEvent } from "@/types";
+
+const defaultEventType: ScheduleEventType = "missa";
 
 export const LOCATIONS: Location[] = [
-	{
-		id: "catedral",
-		name: "Catedral do Senhor Bom Jesus",
-		schedules: [
-			{
-				id: "1",
-				date: new Date(2025, 9, 24),
-				hours: ["07:00", "09:30", "18:00"],
-			},
-			{ id: "2", date: new Date(2025, 9, 25), hours: ["08:00", "11:00"] },
-			{
-				id: "3",
-				date: new Date(2025, 9, 26),
-				hours: ["06:30", "10:00", "20:00"],
-			},
-			{
-				id: "4",
-				date: new Date(2025, 9, 27),
-				hours: ["07:15", "12:00", "18:30"],
-			},
-			{
-				id: "5",
-				date: new Date(2025, 9, 28),
-				hours: ["08:30", "15:00", "19:00"],
-			},
-			{
-				id: "6",
-				date: new Date(2025, 9, 29),
-				hours: ["07:45", "13:00", "20:30"],
-			},
-			{
-				id: "7",
-				date: new Date(2025, 9, 30),
-				hours: ["09:00", "16:00", "21:00"],
-			},
-		],
-	},
-	{
-		id: "saojose",
-		name: "Comunidade São José",
-		schedules: [
-			{ id: "1", date: new Date(2025, 9, 24), hours: ["08:00", "19:00"] },
-			{ id: "2", date: new Date(2025, 9, 25), hours: ["09:00"] },
-			{ id: "3", date: new Date(2025, 9, 26), hours: ["18:00"] },
-		],
-	},
-	{
-		id: "santacruz",
-		name: "Comunidade Santa Cruz",
-		schedules: [
-			{ id: "1", date: new Date(2025, 9, 24), hours: ["10:00"] },
-			{ id: "2", date: new Date(2025, 9, 27), hours: ["19:30"] },
-		],
-	},
-	{
-		id: "santana",
-		name: "Comunidade Sant'Ana",
-		schedules: [
-			{ id: "1", date: new Date(2025, 9, 25), hours: ["07:30", "18:30"] },
-			{ id: "2", date: new Date(2025, 9, 28), hours: ["20:00"] },
-		],
-	},
-	{
-		id: "sagradafamilia",
-		name: "Comunidade Sagrada Família",
-		schedules: [
-			{ id: "1", date: new Date(2025, 9, 26), hours: ["09:00", "17:00"] },
-			{ id: "2", date: new Date(2025, 9, 29), hours: ["19:00"] },
-		],
-	},
-	{
-		id: "saojoao",
-		name: "Comunidade São João Batista",
-		schedules: [
-			{ id: "1", date: new Date(2025, 9, 27), hours: ["08:00"] },
-			{ id: "2", date: new Date(2025, 9, 30), hours: ["18:00"] },
-		],
-	},
-	{
-		id: "santateresa",
-		name: "Comunidade Santa Teresa",
-		schedules: [
-			{ id: "1", date: new Date(2025, 9, 28), hours: ["07:00", "19:00"] },
-		],
-	},
-	{
-		id: "saojoaquim",
-		name: "Comunidade São Joaquim",
-		schedules: [
-			{ id: "1", date: new Date(2025, 9, 29), hours: ["08:30"] },
-			{ id: "2", date: new Date(2025, 9, 30), hours: ["17:00"] },
-		],
-	},
+  {
+    id: "catedral",
+    name: "Catedral do Senhor Bom Jesus",
+    events: [
+      // Horários fixos de missa
+      {
+        id: "1-1",
+        date: new Date(2025, 9, 24),
+        time: "07:00",
+        type: defaultEventType,
+        location: "Catedral do Senhor Bom Jesus",
+      },
+      {
+        id: "1-2",
+        date: new Date(2025, 9, 24),
+        time: "09:30",
+        type: defaultEventType,
+        location: "Catedral do Senhor Bom Jesus",
+      },
+      {
+        id: "1-3",
+        date: new Date(2025, 9, 24),
+        time: "18:00",
+        type: defaultEventType,
+        location: "Catedral do Senhor Bom Jesus",
+      },
+      {
+        id: "2-1",
+        date: new Date(2025, 9, 25),
+        time: "08:00",
+        type: defaultEventType,
+        location: "Catedral do Senhor Bom Jesus",
+      },
+      {
+        id: "2-2",
+        date: new Date(2025, 9, 25),
+        time: "11:00",
+        type: defaultEventType,
+        location: "Catedral do Senhor Bom Jesus",
+      },
+      {
+        id: "3-1",
+        date: new Date(2025, 9, 26),
+        time: "06:30",
+        type: defaultEventType,
+        location: "Catedral do Senhor Bom Jesus",
+      },
+      {
+        id: "3-2",
+        date: new Date(2025, 9, 26),
+        time: "10:00",
+        type: defaultEventType,
+        location: "Catedral do Senhor Bom Jesus",
+      },
+      {
+        id: "3-3",
+        date: new Date(2025, 9, 26),
+        time: "20:00",
+        type: defaultEventType,
+        location: "Catedral do Senhor Bom Jesus",
+      },
+      {
+        id: "4-1",
+        date: new Date(2025, 9, 27),
+        time: "07:15",
+        type: defaultEventType,
+        location: "Catedral do Senhor Bom Jesus",
+      },
+      {
+        id: "4-2",
+        date: new Date(2025, 9, 27),
+        time: "12:00",
+        type: defaultEventType,
+        location: "Catedral do Senhor Bom Jesus",
+      },
+      {
+        id: "4-3",
+        date: new Date(2025, 9, 27),
+        time: "18:30",
+        type: defaultEventType,
+        location: "Catedral do Senhor Bom Jesus",
+      },
+      {
+        id: "5-1",
+        date: new Date(2025, 9, 28),
+        time: "08:30",
+        type: defaultEventType,
+        location: "Catedral do Senhor Bom Jesus",
+      },
+      {
+        id: "5-2",
+        date: new Date(2025, 9, 28),
+        time: "15:00",
+        type: defaultEventType,
+        location: "Catedral do Senhor Bom Jesus",
+      },
+      {
+        id: "5-3",
+        date: new Date(2025, 9, 28),
+        time: "19:00",
+        type: defaultEventType,
+        location: "Catedral do Senhor Bom Jesus",
+      },
+      {
+        id: "6-1",
+        date: new Date(2025, 9, 29),
+        time: "07:45",
+        type: defaultEventType,
+        location: "Catedral do Senhor Bom Jesus",
+      },
+      {
+        id: "6-2",
+        date: new Date(2025, 9, 29),
+        time: "13:00",
+        type: defaultEventType,
+        location: "Catedral do Senhor Bom Jesus",
+      },
+      {
+        id: "6-3",
+        date: new Date(2025, 9, 29),
+        time: "20:30",
+        type: defaultEventType,
+        location: "Catedral do Senhor Bom Jesus",
+      },
+      {
+        id: "7-1",
+        date: new Date(2025, 9, 30),
+        time: "09:00",
+        type: defaultEventType,
+        location: "Catedral do Senhor Bom Jesus",
+      },
+      {
+        id: "7-2",
+        date: new Date(2025, 9, 30),
+        time: "16:00",
+        type: defaultEventType,
+        location: "Catedral do Senhor Bom Jesus",
+      },
+      {
+        id: "7-3",
+        date: new Date(2025, 9, 30),
+        time: "21:00",
+        type: defaultEventType,
+        location: "Catedral do Senhor Bom Jesus",
+      },
+    ],
+  },
+  {
+    id: "saojose",
+    name: "Comunidade São José",
+    events: [
+      {
+        id: "1-1",
+        date: new Date(2025, 9, 24),
+        time: "08:00",
+        type: defaultEventType,
+        location: "Comunidade São José",
+      },
+      {
+        id: "1-2",
+        date: new Date(2025, 9, 24),
+        time: "19:00",
+        type: defaultEventType,
+        location: "Comunidade São José",
+      },
+      {
+        id: "2-1",
+        date: new Date(2025, 9, 25),
+        time: "09:00",
+        type: defaultEventType,
+        location: "Comunidade São José",
+      },
+      {
+        id: "3-1",
+        date: new Date(2025, 9, 26),
+        time: "18:00",
+        type: defaultEventType,
+        location: "Comunidade São José",
+      },
+    ],
+  },
+  {
+    id: "santacruz",
+    name: "Comunidade Santa Cruz",
+    events: [
+      {
+        id: "1-1",
+        date: new Date(2025, 9, 24),
+        time: "10:00",
+        type: defaultEventType,
+        location: "Comunidade Santa Cruz",
+      },
+      {
+        id: "2-1",
+        date: new Date(2025, 9, 27),
+        time: "19:30",
+        type: defaultEventType,
+        location: "Comunidade Santa Cruz",
+      },
+    ],
+  },
+  {
+    id: "santana",
+    name: "Comunidade Sant'Ana",
+    events: [
+      {
+        id: "1-1",
+        date: new Date(2025, 9, 25),
+        time: "07:30",
+        type: defaultEventType,
+        location: "Comunidade Sant'Ana",
+      },
+      {
+        id: "1-2",
+        date: new Date(2025, 9, 25),
+        time: "18:30",
+        type: defaultEventType,
+        location: "Comunidade Sant'Ana",
+      },
+      {
+        id: "2-1",
+        date: new Date(2025, 9, 28),
+        time: "20:00",
+        type: defaultEventType,
+        location: "Comunidade Sant'Ana",
+      },
+    ],
+  },
+  {
+    id: "sagradafamilia",
+    name: "Comunidade Sagrada Família",
+    events: [
+      {
+        id: "1-1",
+        date: new Date(2025, 9, 26),
+        time: "09:00",
+        type: defaultEventType,
+        location: "Comunidade Sagrada Família",
+      },
+      {
+        id: "1-2",
+        date: new Date(2025, 9, 26),
+        time: "17:00",
+        type: defaultEventType,
+        location: "Comunidade Sagrada Família",
+      },
+      {
+        id: "2-1",
+        date: new Date(2025, 9, 29),
+        time: "19:00",
+        type: defaultEventType,
+        location: "Comunidade Sagrada Família",
+      },
+    ],
+  },
+  {
+    id: "saojoao",
+    name: "Comunidade São João Batista",
+    events: [
+      {
+        id: "1-1",
+        date: new Date(2025, 9, 27),
+        time: "08:00",
+        type: defaultEventType,
+        location: "Comunidade São João Batista",
+      },
+      {
+        id: "2-1",
+        date: new Date(2025, 9, 30),
+        time: "18:00",
+        type: defaultEventType,
+        location: "Comunidade São João Batista",
+      },
+    ],
+  },
+  {
+    id: "santateresa",
+    name: "Comunidade Santa Teresa",
+    events: [
+      {
+        id: "1-1",
+        date: new Date(2025, 9, 28),
+        time: "07:00",
+        type: defaultEventType,
+        location: "Comunidade Santa Teresa",
+      },
+      {
+        id: "1-2",
+        date: new Date(2025, 9, 28),
+        time: "19:00",
+        type: defaultEventType,
+        location: "Comunidade Santa Teresa",
+      },
+    ],
+  },
+  {
+    id: "saojoaquim",
+    name: "Comunidade São Joaquim",
+    events: [
+      {
+        id: "1-1",
+        date: new Date(2025, 9, 29),
+        time: "08:30",
+        type: defaultEventType,
+        location: "Comunidade São Joaquim",
+      },
+      {
+        id: "2-1",
+        date: new Date(2025, 9, 30),
+        time: "17:00",
+        type: defaultEventType,
+        location: "Comunidade São Joaquim",
+      },
+    ],
+  },
 ];

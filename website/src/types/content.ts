@@ -1,39 +1,35 @@
 export type NoticiaCategoria = "grande" | "normal";
 
 export interface Noticia {
-	src: string;
-	titulo: string;
-	descricao: string;
-	categoria: NoticiaCategoria;
-	data: Date;
+  src: string;
+  titulo: string;
+  descricao: string;
+  categoria: NoticiaCategoria;
+  data: Date;
 }
 
-export interface Evento {
-	id: string;
-	title: string;
-	date: Date;
-	time: string;
-	location: string;
-	image: string;
+export type ScheduleEventType =
+  | "missa"
+  | "celebracao"
+  | "confissao"
+  | "novena"
+  | "evento"
+  | "outro";
+
+export interface ScheduleEvent {
+  id: string;
+  title?: string;
+  date: Date;
+  time: string;
+  type: ScheduleEventType;
+  location: string;
+  imageUrl?: string;
+  descricao?: string;
 }
 
-export interface Event {
-	id: string;
-	imageUrl: string;
-	title: string;
-	date: Date;
-	hour: string;
-	location: string;
-}
-
+// Exemplo de local com lista de eventos agendados
 export interface Location {
-	id: string;
-	name: string;
-	schedules: Schedule[];
-}
-
-export interface Schedule {
-	id: string;
-	date: Date;
-	hours: string[];
+  id: string;
+  name: string;
+  events: ScheduleEvent[];
 }

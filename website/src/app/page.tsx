@@ -56,7 +56,6 @@ export default function Home() {
           className="w-full h-[1180px] object-cover object-center"
         />
       </div>
-      <Eventos className={mx} />
       <Horarios className={mx} />
       <div className="relative w-full flex justify-center overflow-hidden">
         <p className="absolute left-4 md:left-8 lg:left-16 xl:left-50 top-1/2 -translate-y-1/2 text-justify text-white text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl max-w-[80%] sm:max-w-[400px] md:max-w-[400px] lg:max-w-[550px] px-2 z-10 font-playfair-display text-shadow-custom font-bold">
