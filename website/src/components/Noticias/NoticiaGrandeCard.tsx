@@ -12,15 +12,16 @@ export default function NoticiaGrandeCard({
   noticias: Noticia[];
 }) {
   const [hovered, setHovered] = useState(false);
-
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
+  const [dragging, setDragging] = useState(false); // Estado para saber se está arrastando
   const noticia = noticias[activeIndex];
 
-  function prev() {
+  const prev = () => {
     setDirection(-1);
     setActiveIndex((prev) => (prev === 0 ? noticias.length - 1 : prev - 1));
-  }
+  };
+
   const next = useCallback(() => {
     setDirection(1);
     setActiveIndex((prev) => (prev === noticias.length - 1 ? 0 : prev + 1));
@@ -30,7 +31,6 @@ export default function NoticiaGrandeCard({
     if (hovered || noticias.length <= 1) return;
 
     const interval = setInterval(next, 5000);
-
     return () => clearInterval(interval);
   }, [hovered, noticias.length, next]);
 
@@ -166,6 +166,26 @@ export default function NoticiaGrandeCard({
           </button>
         </div>
       )}
+
+      {/* Arraste o Slider */}
+      <motion.div
+        className="absolute inset-0 w-full h-full cursor-grab"
+        drag="x"
+        dragConstraints={{ left: 0, right: 0 }}
+        dragElastic={0.1}
+        onDragStart={() => setDragging(true)}
+        onDragEnd={(e, info) => {
+          setDragging(false);
+          // Arraste para a esquerda
+          if (info.offset.x < -100) {
+            next();
+          }
+          // Arraste para a direita
+          else if (info.offset.x > 100) {
+            prev();
+          }
+        }}
+      />
     </div>
   );
 }

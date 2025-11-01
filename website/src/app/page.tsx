@@ -17,14 +17,26 @@ export default function Home() {
           <br />
           Isaías 53:4
         </p>
-        <Image
-          src={"/christ1.png"}
-          width={1920}
-          height={1180}
-          quality={100}
-          className="w-full h-[1180px] object-cover object-center"
-          alt="Cristo carregando a cruz"
-        />
+        <div className="hidden lg:block w-full">
+          <Image
+            src={"/christ1.png"}
+            width={1920}
+            height={1180}
+            quality={100}
+            className="w-full h-[1180px] object-cover object-center"
+            alt="Cristo carregando a cruz"
+          />
+        </div>
+        <div className="block lg:hidden w-full">
+          <Image
+            src={"/christ1-mobile.png"}
+            width={1920}
+            height={1180}
+            quality={100}
+            className="w-full h-[1180px] object-cover object-center"
+            alt="Cristo carregando a cruz"
+          />
+        </div>
       </div>
       <Noticias noticias={noticiasData} className={mx} />
       <div className="relative w-full flex justify-center overflow-hidden">

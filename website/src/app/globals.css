@@ -43,7 +43,7 @@
         margin-right: 0 !important;
     }
     h1 {
-        @apply text-[70px] text-center font-bold font-big-shoulders;
+        @apply text-[50px] xl:text-[70px] text-center font-bold font-big-shoulders;
     }
     h2 {
         @apply text-4xl md:text-5xl text-gray-900 mb-4 text-center font-bold font-big-shoulders;
