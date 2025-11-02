@@ -64,11 +64,21 @@ export default function NoticiaGrandeCard({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* Imagem */}
+      {/* Imagem com drag (apenas mobile) */}
       <motion.div
-        className="w-full h-full"
+        className="w-full h-full md:pointer-events-none"
         animate={{ scale: hovered ? 1.05 : 1 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
+        drag="x"
+        dragConstraints={{ left: 0, right: 0 }}
+        dragElastic={0.1}
+        onDragStart={() => setDragging(true)}
+        onDragEnd={(e, info) => {
+          setDragging(false);
+          if (info.offset.x < -100) next();
+          else if (info.offset.x > 100) prev();
+        }}
+        style={{ touchAction: "pan-y" }}
       >
         <div className="relative w-full h-full">
           <AnimatePresence initial={false} custom={direction} mode="wait">
@@ -92,17 +102,13 @@ export default function NoticiaGrandeCard({
             </motion.div>
           </AnimatePresence>
         </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent pointer-events-none md:pointer-events-auto" />
       </motion.div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
 
-      <div className="p-10 absolute bottom-0 text-left max-w-[620px] flex flex-col gap-4">
-        {/* Título */}
+      {/* Conteúdo sobreposto */}
+      <div className="p-10 absolute bottom-0 text-left max-w-[620px] flex flex-col gap-4 z-10 pointer-events-none">
         <h3 className="text-lg text-white text-left mb-0">{noticia.titulo}</h3>
-
-        {/* Descrição */}
         <p className="text-md text-white">{noticia.descricao}</p>
-
-        {/* Data */}
         <div className="text-sm text-white flex items-center">
           <Image
             src="/calendar.svg"
@@ -113,13 +119,14 @@ export default function NoticiaGrandeCard({
           />
           {formattedDate}
         </div>
-
-        <NewsButton />
+        <div className="pointer-events-auto">
+          <NewsButton />
+        </div>
       </div>
 
       {/* Slides Bottom */}
       {noticias.length > 1 && (
-        <div className="absolute inset-0 flex justify-center items-end p-6 gap-1.5">
+        <div className="absolute inset-0 flex justify-center items-end p-6 gap-1.5 z-20 pointer-events-none">
           {noticias.map((x, index) => (
             <motion.div
               animate={{ width: index === activeIndex ? 30 : 10 }}
@@ -130,7 +137,7 @@ export default function NoticiaGrandeCard({
                   setActiveIndex(index);
                 }
               }}
-              className={`w-[10px] h-[10px] cursor-pointer ${index === activeIndex ? "bg-white" : "bg-white/50"} rounded-full`}
+              className={`w-[10px] h-[10px] cursor-pointer ${index === activeIndex ? "bg-white" : "bg-white/50"} rounded-full pointer-events-auto`}
             />
           ))}
         </div>
@@ -138,9 +145,9 @@ export default function NoticiaGrandeCard({
 
       {/* Next and Prev Buttons */}
       {hovered && (
-        <div className="hidden md:block">
+        <div className="hidden md:block absolute inset-0 pointer-events-none z-30">
           <button
-            className="absolute cursor-pointer rounded-full bg-white/40 hover:bg-white/50 w-14 h-14 top-[calc(50%-25px)] left-4 flex items-center justify-center"
+            className="absolute cursor-pointer rounded-full bg-white/40 hover:bg-white/50 w-14 h-14 top-[calc(50%-25px)] left-4 flex items-center justify-center pointer-events-auto"
             onClick={prev}
           >
             <Image
@@ -152,10 +159,9 @@ export default function NoticiaGrandeCard({
             />
           </button>
           <button
-            className="absolute cursor-pointer rounded-full bg-white/40 hover:bg-white/50 w-14 h-14 top-[calc(50%-25px)] right-4 flex items-center justify-center"
+            className="absolute cursor-pointer rounded-full bg-white/40 hover:bg-white/50 w-14 h-14 top-[calc(50%-25px)] right-4 flex items-center justify-center pointer-events-auto"
             onClick={next}
           >
-            {" "}
             <Image
               src="/arrow-button.svg"
               alt="Seta Direita"
@@ -166,26 +172,6 @@ export default function NoticiaGrandeCard({
           </button>
         </div>
       )}
-
-      {/* Arraste o Slider */}
-      <motion.div
-        className="absolute inset-0 w-full h-full cursor-grab"
-        drag="x"
-        dragConstraints={{ left: 0, right: 0 }}
-        dragElastic={0.1}
-        onDragStart={() => setDragging(true)}
-        onDragEnd={(e, info) => {
-          setDragging(false);
-          // Arraste para a esquerda
-          if (info.offset.x < -100) {
-            next();
-          }
-          // Arraste para a direita
-          else if (info.offset.x > 100) {
-            prev();
-          }
-        }}
-      />
     </div>
   );
 }

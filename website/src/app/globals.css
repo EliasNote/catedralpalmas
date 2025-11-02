@@ -9,6 +9,7 @@
     --color-background: var(--background);
     --color-foreground: var(--foreground);
     --color-blue: #3b82f6;
+    --color-yellow: #fcd34d;
     --font-mono: var(--font-geist-mono);
     /* restore tokens used by utilities */
     --color-border: var(--border);

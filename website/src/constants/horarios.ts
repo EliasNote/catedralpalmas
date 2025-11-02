@@ -5,5 +5,5 @@ import { Location } from "@/types";
 export const LOCATIONS: Location[] = [];
 
 // Helper para obter locations do Supabase
-// Use EventService.getLocations() e EventService.groupEventsByLocation() 
+// Use EventService.getLocations() e EventService.groupEventsByLocation()
 // para obter os dados atualizados do banco de dados

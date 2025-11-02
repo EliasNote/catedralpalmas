@@ -13,7 +13,7 @@ export default function Noticias({ noticias, className = "" }: NoticiasProps) {
   const noticiasGrandes = noticias.filter((n) => n.categoria == "grande");
 
   return (
-    <section className={`py-12 px-4 ${className} max-w-[1280px] w-full`}>
+    <section className={`py-12 ${className} max-w-[1280px] w-full`}>
       <div className="mx-auto flex flex-col gap-4">
         <div className="text-center mb-12">
           <h2>Últimas Notícias</h2>
