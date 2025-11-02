@@ -1,4 +1,13 @@
 export type NoticiaCategoria = "grande" | "normal";
+export type LocationName =
+  | "Catedral"
+  | "São Jose"
+  | "Santa Cruz"
+  | "Santana"
+  | "Sagrada Família"
+  | "São Joao"
+  | "Santa Teresa"
+  | "São Joaquim";
 
 export interface Noticia {
   src: string;
@@ -30,6 +39,6 @@ export interface ScheduleEvent {
 // Exemplo de local com lista de eventos agendados
 export interface Location {
   id: string;
-  name: string;
+  name: LocationName;
   events: ScheduleEvent[];
 }
