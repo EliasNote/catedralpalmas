@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <>
       <section className="relative flex w-full">
-        <h1 className="absolute top-[calc(100vh/2)] left-1/2 z-30 -translate-x-1/2 -translate-y-1/2 text-white pointer-events-none w-full max-w-[90vw]">
+        <h1 className="absolute top-[calc(100vh/2)] left-1/2 z-5 -translate-x-1/2 -translate-y-1/2 text-white pointer-events-none w-full max-w-[90vw]">
           Catedral do Senhor Bom Jesus da Coluna
         </h1>
         {HERO_IMAGES.map(({ src, margin }, idx) => (

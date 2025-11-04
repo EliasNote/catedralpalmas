@@ -1,15 +1,9 @@
-export const NAV_LEFT = [
-	{ href: "/", label: "Início" },
-	{ href: "/eventos", label: "Eventos" },
-	{ href: "/calendario", label: "Calendário" },
-	{ href: "/noticias", label: "Notícias" },
+export const NAV_OPTIONS = [
+  { href: "/", label: "Início" },
+  { href: "/calendario", label: "Calendário" },
+  { href: "/noticias", label: "Notícias" },
+  { href: "/sobre", label: "Sobre" },
+  { href: "/galeria", label: "Galeria" },
+  { href: "/contato", label: "Contato" },
+  { href: "/oracoes", label: "Orações" },
 ] as const;
-
-export const NAV_RIGHT = [
-	{ href: "/sobre", label: "Sobre" },
-	{ href: "/galeria", label: "Galeria" },
-	{ href: "/contato", label: "Contato" },
-	{ href: "/oracoes", label: "Orações" },
-] as const;
-
-export const NAV_HEIGHT = 70;

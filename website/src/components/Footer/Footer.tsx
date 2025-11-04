@@ -78,12 +78,12 @@ export default function Footer({ className }: { className: string }) {
                   <FaPhone size={iconSize1} />
                   {CATEDRAL_INFO.contacts.phone}
                 </span>
-                <span className="flex items-center gap-2">
-                  <FaEnvelope size={iconSize1} />
+                <span>
                   <a
                     href={`mailto:${CATEDRAL_INFO.contacts.email}`}
-                    className="underline hover:text-blue-700"
+                    className="hover:underline flex items-center gap-2"
                   >
+                    <FaEnvelope size={iconSize1} />
                     {CATEDRAL_INFO.contacts.email}
                   </a>
                 </span>
