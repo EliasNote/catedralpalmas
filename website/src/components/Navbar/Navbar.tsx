@@ -41,7 +41,7 @@ export default function Navbar() {
       className="fixed left-0 right-0 z-100 w-full"
     >
       <motion.div
-        className="mx-auto flex items-center w-full justify-between lg:justify-center gap-3 px-10"
+        className="mx-auto flex items-center w-full justify-between lg:justify-center px-10"
         animate={{
           color: isShrunk ? "rgba(0, 0, 0, 1)" : "rgba(255, 255, 255, 1)",
         }}
@@ -59,14 +59,13 @@ export default function Navbar() {
               width={88}
               height={88}
               quality={100}
-              className="rounded-full mx-1.5 w-full h-full"
+              className={`rounded-full mx-1.5 w-full h-full ${menuOpen && "hidden"}`}
             />
           </Link>
         </motion.div>
         <NavbarOptions
           options={NAV_OPTIONS}
           springTransition={springTransition}
-          className="hidden lg:block"
         />
         <button
           className="lg:hidden cursor-pointer w-14 h-14 bg-white/25 hover:bg-white/50 rounded-full flex items-center justify-center"
@@ -104,7 +103,7 @@ export default function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="absolute top-full left-0 w-full h-screen bg-transparent shadow-lg z-50"
+            className="absolute top-full left-0 w-full h-screen bg-transparent shadow-lg z-50 flex flex-col items-center"
             initial={{
               opacity: 0,
               backgroundColor: "rgba(255,255,255,0)",
@@ -119,10 +118,19 @@ export default function Navbar() {
             }}
             transition={springTransition}
           >
+            <Image
+              src="/brasao.png"
+              alt="Brasão"
+              width={110}
+              height={110}
+              quality={100}
+              className={`rounded-full w-[110px] h-[110px] ${!menuOpen && "hidden"}`}
+            />
             <NavbarOptions
               options={NAV_OPTIONS}
               springTransition={springTransition}
-              className="flex flex-col items-center gap-4 py-4"
+              menuOpen={menuOpen}
+              setMenuOpen={setMenuOpen}
             />
           </motion.div>
         )}
