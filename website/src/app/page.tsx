@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Hero, Noticias, Horarios, Footer } from "@/components";
+import { Hero, Noticias, Horarios } from "@/components";
 import { noticiasData } from "@/constants";
 
 export default function Home() {
@@ -75,7 +75,6 @@ export default function Home() {
           className="w-full h-[1180px] object-cover object-center"
         />
       </div>
-      <Footer className={mx} />
     </section>
   );
 }

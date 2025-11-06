@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components";
+import { Footer, Navbar } from "@/components";
 
 const interSans = Inter({
   variable: "--font-inter-sans",
@@ -46,6 +46,7 @@ export default function RootLayout({
       >
         <Navbar />
         <div>{children}</div>
+        <Footer className={"px-2"} />
       </body>
     </html>
   );

@@ -7,7 +7,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../ui/select";
+} from "../../ui/select";
 import { useEffect, useState } from "react";
 import WeekCard from "./WeekCard";
 import DayCard from "./DayCard";

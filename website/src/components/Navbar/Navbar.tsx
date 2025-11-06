@@ -1,12 +1,13 @@
 "use client";
-import Link from "next/link";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
-import { AnimatePresence, motion, Transition } from "framer-motion";
-import NavbarOptions from "./NavbarOptions";
 import { NAV_OPTIONS } from "@/constants";
+import { AnimatePresence, motion, Transition } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
+import NavbarOptions from "./NavbarOptions";
+import NavbarMobile from "./NavbarMobile";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -32,9 +33,12 @@ export default function Navbar() {
       animate={{
         backgroundColor: menuOpen
           ? "rgba(255,255,255,1)"
-          : isShrunk
-            ? "rgba(255, 255, 255, 1)"
-            : "rgba(0, 0, 0, 0.05)",
+          : pathname === "/"
+            ? isShrunk
+              ? "rgba(255,255,255,1)"
+              : "rgba(0,0,0,0.05)"
+            : "rgba(255,255,255,1)",
+
         paddingBlock: isShrunk ? "6px" : "20px",
       }}
       transition={springTransition}
@@ -43,12 +47,15 @@ export default function Navbar() {
       <motion.div
         className="mx-auto flex items-center w-full justify-between lg:justify-center px-10"
         animate={{
-          color: isShrunk ? "rgba(0, 0, 0, 1)" : "rgba(255, 255, 255, 1)",
+          color:
+            isShrunk || pathname !== "/"
+              ? "rgba(0, 0, 0, 1)"
+              : "rgba(255, 255, 255, 1)",
         }}
       >
         <motion.div
           animate={{
-            maxWidth: isShrunk ? "70px" : "90px",
+            maxWidth: isShrunk || pathname !== "/" ? "70px" : "90px",
           }}
           className="flex items-center"
         >
@@ -99,42 +106,11 @@ export default function Navbar() {
           </AnimatePresence>
         </button>
       </motion.div>
-
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            className="absolute top-full left-0 w-full h-screen bg-transparent shadow-lg z-50 flex flex-col items-center"
-            initial={{
-              opacity: 0,
-              backgroundColor: "rgba(255,255,255,0)",
-            }}
-            animate={{
-              opacity: 1,
-              backgroundColor: "rgba(255,255,255,1)",
-            }}
-            exit={{
-              opacity: 0,
-              backgroundColor: "rgba(255,255,255,0)",
-            }}
-            transition={springTransition}
-          >
-            <Image
-              src="/brasao.png"
-              alt="Brasão"
-              width={110}
-              height={110}
-              quality={100}
-              className={`rounded-full w-[110px] h-[110px] ${!menuOpen && "hidden"}`}
-            />
-            <NavbarOptions
-              options={NAV_OPTIONS}
-              springTransition={springTransition}
-              menuOpen={menuOpen}
-              setMenuOpen={setMenuOpen}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <NavbarMobile
+        springTransition={springTransition}
+        menuOpen={menuOpen}
+        setMenuOpen={setMenuOpen}
+      />
     </motion.nav>
   );
 }

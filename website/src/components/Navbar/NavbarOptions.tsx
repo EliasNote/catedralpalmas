@@ -26,7 +26,7 @@ export default function NavbarOptions({
 
   return (
     <motion.div
-      className={`lg:flex ${menuOpen ? "flex flex-col gap-2 items-center w-full h-full px-2 py-4" : "hidden gap-2 ml-4 "}`}
+      className={`lg:flex ${menuOpen ? "flex flex-col gap-2 items-center w-full h-full px-2 py-4" : "hidden gap-2 ml-4"}`}
       variants={
         menuOpen
           ? {
@@ -54,8 +54,8 @@ export default function NavbarOptions({
           }}
           transition={springTransition}
           className={`px-[10px] lg:px-[14px] py-[8px] hover:bg-gray-300/80 max-h-fit cursor-pointer rounded-[2px]
-            ${menuOpen && "max-w-sm w-full flex justify-center py-[12px] h-full items-center bg-gray-100/90to-90%"}
-            ${pathname === href && menuOpen && "bg-gray-300/80"}
+            ${menuOpen && "max-w-sm w-full flex justify-center py-[12px] h-full items-center bg-gray-300/15"}
+            ${pathname === href && menuOpen && "bg-gray-400/50"}
           `}
         >
           <Link href={href} className="font-semibold">
