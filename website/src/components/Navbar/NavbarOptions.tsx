@@ -43,25 +43,27 @@ export default function NavbarOptions({
       animate={menuOpen ? "visible" : undefined}
     >
       {options.map(({ href, label }) => (
-        <motion.span
+        <Link
           key={href}
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0 },
-          }}
+          href={href}
+          className={`font-semibold px-[10px] lg:px-[14px] py-[8px] hover:bg-gray-300/80 max-h-fit cursor-pointer rounded-[2px]
+        ${menuOpen && "max-w-sm w-full flex justify-center py-[12px] h-full items-center bg-gray-300/15"}
+        ${pathname === href && menuOpen && "bg-gray-400/50"}
+      `}
           onClick={() => {
             if (menuOpen && setMenuOpen) setMenuOpen(false);
           }}
-          transition={springTransition}
-          className={`px-[10px] lg:px-[14px] py-[8px] hover:bg-gray-300/80 max-h-fit cursor-pointer rounded-[2px]
-            ${menuOpen && "max-w-sm w-full flex justify-center py-[12px] h-full items-center bg-gray-300/15"}
-            ${pathname === href && menuOpen && "bg-gray-400/50"}
-          `}
         >
-          <Link href={href} className="font-semibold">
+          <motion.span
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            transition={springTransition}
+          >
             {label}
-          </Link>
-        </motion.span>
+          </motion.span>
+        </Link>
       ))}
     </motion.div>
   );

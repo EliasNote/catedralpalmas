@@ -1,6 +1,6 @@
 export const NAV_OPTIONS = [
   { href: "/", label: "Início" },
-  { href: "/calendario", label: "Calendário" },
+  { href: "/calendar", label: "Calendário" },
   { href: "/noticias", label: "Notícias" },
   { href: "/sobre", label: "Sobre" },
   { href: "/galeria", label: "Galeria" },
