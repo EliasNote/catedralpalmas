@@ -36,9 +36,14 @@ export interface ScheduleEvent {
   descricao?: string;
 }
 
-// Exemplo de local com lista de eventos agendados
 export interface Location {
   id: string;
   name: LocationName;
   events: ScheduleEvent[];
+}
+
+export interface EventColor {
+  text: string;
+  bg: string;
+  border: string;
 }

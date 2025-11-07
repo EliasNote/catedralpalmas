@@ -1,12 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DayCard from "./DayCard";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { EventService } from "@/services/eventService";
+import { EventWithRelations } from "@/types/supabase";
 
 export default function Calendar() {
   const [month, setMonth] = useState(new Date().getMonth());
   const [year, setYear] = useState(new Date().getFullYear());
+  const [loading, setLoading] = useState(true);
+  const [events, setEvents] = useState<EventWithRelations[]>([]);
 
   const lastDay = new Date(year, month + 1, 0).getDate();
   const daysMonth = [];
@@ -48,6 +52,21 @@ export default function Calendar() {
     "Sábado",
   ];
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        setEvents(await EventService.getEvents());
+      } catch (error) {
+        console.error("Erro ao carregar eventos:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="max-w-200 w-full">
       <div className="flex gap-5 items-center justify-between max-w-60 mb-5">
@@ -80,9 +99,15 @@ export default function Calendar() {
           {Array.from({ length: firstDayWeek }).map((_, i) => (
             <div key={`empty-${i}`} />
           ))}
-          {daysMonth.map((d, k) => (
-            <DayCard key={k} day={d} />
-          ))}
+          {daysMonth.map((d, k) => {
+            const eventsForDay = events.filter(
+              (event) =>
+                new Date(event.date).getDay() === d &&
+                new Date(event.date).getMonth() === month &&
+                new Date(event.date).getFullYear() === year,
+            );
+            return <DayCard key={k} day={d} events={eventsForDay} />;
+          })}
         </div>
       </div>
     </div>
