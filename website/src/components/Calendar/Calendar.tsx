@@ -5,6 +5,7 @@ import DayCard from "./DayCard";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { EventService } from "@/services/eventService";
 import { EventWithRelations } from "@/types/supabase";
+import { EVENTS_COLOR } from "@/constants";
 
 export default function Calendar() {
   const [month, setMonth] = useState(new Date().getMonth());
@@ -68,8 +69,8 @@ export default function Calendar() {
   }, []);
 
   return (
-    <div className="max-w-200 w-full">
-      <div className="flex gap-5 items-center justify-between max-w-60 mb-5">
+    <div className="max-w-200 w-full flex flex-col gap-2 ">
+      <div className="flex gap-5 items-center justify-between max-w-60 mb-3">
         <p className="font-bold text-[20px]">{`${monthName} ${year}`}</p>
         <div className="flex gap-1">
           <FiChevronLeft
@@ -84,6 +85,20 @@ export default function Calendar() {
           />
         </div>
       </div>
+      <div className="flex flex-row w-full h-fit gap-2">
+        {Object.keys(EVENTS_COLOR).map((eventType, k) => {
+          const colors = EVENTS_COLOR[eventType as keyof typeof EVENTS_COLOR];
+          return (
+            <div
+              className="flex items-center gap-2 border rounded px-2 py-1"
+              key={k}
+            >
+              <div className={`w-4 h-4 rounded-[2px] ${colors.bg}`} />
+              <p>{eventType}</p>
+            </div>
+          );
+        })}
+      </div>
       <div className="max-w-200 w-full mx-auto border rounded">
         <div className="grid grid-cols-7">
           {diasSemana.map((dia, index) => (
@@ -95,7 +110,7 @@ export default function Calendar() {
             </div>
           ))}
         </div>
-        <div className="grid grid-cols-7 gap-0.5 aspect-square w-full p-0.5">
+        <div className="grid grid-cols-7 gap-0.5 w-full p-0.5">
           {Array.from({ length: firstDayWeek }).map((_, i) => (
             <div key={`empty-${i}`} />
           ))}
