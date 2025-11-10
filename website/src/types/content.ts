@@ -62,3 +62,12 @@ export interface EventColor {
   bg: string;
   border: string;
 }
+
+// Tipos para Next.js App Router (dynamic routes)
+export interface PageParams {
+  slug: string;
+}
+
+export interface NewsPageProps {
+  params: Promise<PageParams>;
+}

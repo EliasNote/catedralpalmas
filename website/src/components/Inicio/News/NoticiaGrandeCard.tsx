@@ -11,7 +11,6 @@ export default function NoticiaGrandeCard({ news }: { news: News[] }) {
   const [hovered, setHovered] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
-  const [dragging, setDragging] = useState(false);
 
   const prev = () => {
     setDirection(-1);
@@ -78,9 +77,7 @@ export default function NoticiaGrandeCard({ news }: { news: News[] }) {
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}
         dragElastic={0.1}
-        onDragStart={() => setDragging(true)}
         onDragEnd={(e, info) => {
-          setDragging(false);
           if (info.offset.x < -100) next();
           else if (info.offset.x > 100) prev();
         }}

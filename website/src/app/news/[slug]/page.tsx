@@ -4,18 +4,17 @@ import { notFound } from "next/navigation";
 import { formatDate } from "@/config/locale";
 import ReactMarkdown from "react-markdown";
 import Link from "next/link";
+import type { NewsPageProps } from "@/types";
 
-export default async function NewsDetail({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default async function NewsDetail({ params }: NewsPageProps) {
+  const { slug } = await params;
+  
   let noticia;
 
   try {
-    noticia = await NewsService.getNewsBySlug(params.slug);
-  } catch (error) {
-    notFound(); // Redireciona para 404 se não encontrar
+    noticia = await NewsService.getNewsBySlug(slug);
+  } catch {
+    notFound();
   }
 
   const formattedDate = formatDate(new Date(noticia.published_at));
@@ -42,7 +41,7 @@ export default async function NewsDetail({
         {/* Tags */}
         {noticia.tags && noticia.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-6">
-            {noticia.tags.map((tag) => (
+            {noticia.tags.map((tag: string) => (
               <span
                 key={tag}
                 className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm"
@@ -70,7 +69,7 @@ export default async function NewsDetail({
           ) : (
             // Grid de múltiplas imagens
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {noticia.images.map((image, index) => (
+              {noticia.images.map((image: string, index: number) => (
                 <div
                   key={index}
                   className="relative w-full h-48 sm:h-64 rounded-lg overflow-hidden"
@@ -107,12 +106,9 @@ export default async function NewsDetail({
 }
 
 // Gerar metadata dinâmica (SEO)
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const noticia = await NewsService.getNewsBySlug(params.slug);
+export async function generateMetadata({ params }: NewsPageProps) {
+  const { slug } = await params;
+  const noticia = await NewsService.getNewsBySlug(slug);
 
   return {
     title: noticia.title,
