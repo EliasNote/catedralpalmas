@@ -1,16 +1,17 @@
 "use client";
 
-import type { Noticia } from "@/types";
-import NoticiaCard from "./NoticiaNormalCard";
+import type { News } from "@/types";
 import NoticiaGrandeCard from "./NoticiaGrandeCard";
+import NoticiaCard from "@/components/News/NewsCard";
 
-interface NoticiasProps {
-  noticias: Noticia[];
+export default function Noticias({
+  news = [],
+  className = "",
+}: {
+  news?: News[];
   className?: string;
-}
-
-export default function Noticias({ noticias, className = "" }: NoticiasProps) {
-  const noticiasGrandes = noticias.filter((n) => n.categoria == "grande");
+}) {
+  const noticiasGrandes = news.filter((n) => n.category == "grande");
 
   return (
     <section className={`py-12 ${className} max-w-[1280px] w-full`}>
@@ -22,13 +23,13 @@ export default function Noticias({ noticias, className = "" }: NoticiasProps) {
           </p>
         </div>
 
-        <NoticiaGrandeCard noticias={noticiasGrandes} />
+        <NoticiaGrandeCard news={noticiasGrandes} />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {noticias.map(
-            (noticia, index) =>
-              noticia.categoria == "normal" && (
-                <NoticiaCard key={index} noticia={noticia} />
+          {news.map(
+            (news, index) =>
+              news.category == "normal" && (
+                <NoticiaCard key={index} news={news} />
               ),
           )}
         </div>

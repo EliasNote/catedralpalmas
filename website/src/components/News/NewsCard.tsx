@@ -3,22 +3,25 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Noticia } from "@/types";
+import { News } from "@/types";
 import { formatDate } from "@/config/locale";
+import { useRouter } from "next/navigation";
 
-interface NoticiaCardProps {
-  noticia: Noticia;
-}
-
-export default function NoticiaCard({ noticia }: NoticiaCardProps) {
+export default function NewsCard({ news }: { news: News }) {
   const [hovered, setHovered] = useState(false);
-  const formattedDate = formatDate(noticia.data);
+  const formattedDate = formatDate(new Date(news.published_at));
+  const router = useRouter();
+
+  function openNews() {
+    router.push(`/news/${news.slug}`);
+  }
 
   return (
     <div
       className="relative bg-white rounded-lg overflow-hidden group cursor-pointer h-full flex flex-col shadow-md hover:shadow-xl transition-shadow duration-300"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={() => openNews()}
     >
       {/* Imagem */}
       <div className="relative w-full h-48 sm:h-56 overflow-hidden">
@@ -28,8 +31,8 @@ export default function NoticiaCard({ noticia }: NoticiaCardProps) {
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
           <Image
-            src={noticia.src}
-            alt={noticia.titulo}
+            src={news.cover_image}
+            alt={news.title}
             fill
             className="object-cover"
           />
@@ -40,12 +43,12 @@ export default function NoticiaCard({ noticia }: NoticiaCardProps) {
       <div className="p-4 sm:p-5 flex-1 flex flex-col">
         {/* Título */}
         <h3 className="text-base sm:text-lg text-gray-900 mb-2 line-clamp-2 font-semibold transition-colors">
-          {noticia.titulo}
+          {news.title}
         </h3>
 
         {/* Descrição */}
         <p className="text-sm sm:text-base text-gray-600 mb-4 line-clamp-3 flex-1">
-          {noticia.descricao}
+          {news.summary}
         </p>
 
         {/* Data */}

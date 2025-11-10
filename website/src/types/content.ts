@@ -9,12 +9,22 @@ export type LocationName =
   | "Santa Teresa"
   | "São Joaquim";
 
-export interface Noticia {
-  src: string;
-  titulo: string;
-  descricao: string;
-  categoria: NoticiaCategoria;
-  data: Date;
+export interface News {
+  id: string;
+  slug: string;
+  title: string;
+  subtitle?: string | null;
+  summary: string;
+  cover_image: string;
+  content: string; // Markdown
+  images: string[];
+  author?: string | null;
+  category: NoticiaCategoria;
+  tags?: string[] | null;
+  published_at: string;
+  updated_at: string;
+  featured: boolean;
+  created_at: string;
 }
 
 export type ScheduleEventType =
@@ -25,21 +35,26 @@ export type ScheduleEventType =
   | "evento"
   | "outro";
 
-export interface ScheduleEvent {
+export interface EventWithRelations {
   id: string;
-  title?: string;
-  date: Date;
+  title: string | null;
+  date: string;
   time: string;
-  type: ScheduleEventType;
-  location: string;
-  imageUrl?: string;
-  descricao?: string;
+  type: {
+    id: string;
+    name: string;
+  };
+  location: {
+    id: string;
+    name: string;
+  };
+  descricao: string | null;
 }
 
 export interface Location {
   id: string;
   name: LocationName;
-  events: ScheduleEvent[];
+  events: EventWithRelations[];
 }
 
 export interface EventColor {

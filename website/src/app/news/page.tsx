@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { FaNewspaper } from "react-icons/fa";
-import { noticiasData } from "@/constants";
-import { NoticiasList, FilterBar, Pagination } from "@/components/Noticias";
+import { NoticiasList, FilterBar, Pagination } from "@/components/News";
+import { News } from "@/types";
+import { NewsService } from "@/services/newsService";
 
 export default function Noticias() {
   const [selectedFilter, setSelectedFilter] = useState<
@@ -11,23 +12,36 @@ export default function Noticias() {
   >("todas");
   const [currentPage, setCurrentPage] = useState(1);
   const noticiasPerPage = 12;
+  const [news, setNews] = useState<News[]>([]);
 
   // Filtrar e ordenar notícias
   const filteredNoticias = useMemo(() => {
-    const filtered = [...noticiasData];
+    const filtered = [...news];
 
     // Aplicar filtro de data
     if (selectedFilter === "recentes") {
-      filtered.sort((a, b) => b.data.getTime() - a.data.getTime());
+      filtered.sort(
+        (a, b) =>
+          new Date(b.published_at).getTime() -
+          new Date(a.published_at).getTime(),
+      );
     } else if (selectedFilter === "antigas") {
-      filtered.sort((a, b) => a.data.getTime() - b.data.getTime());
+      filtered.sort(
+        (a, b) =>
+          new Date(a.published_at).getTime() -
+          new Date(b.published_at).getTime(),
+      );
     } else {
       // "todas" - ordenar por data mais recente
-      filtered.sort((a, b) => b.data.getTime() - a.data.getTime());
+      filtered.sort(
+        (a, b) =>
+          new Date(b.published_at).getTime() -
+          new Date(a.published_at).getTime(),
+      );
     }
 
     return filtered;
-  }, [selectedFilter]);
+  }, [selectedFilter, news]);
 
   // Paginação
   const totalPages = Math.ceil(filteredNoticias.length / noticiasPerPage);
@@ -42,6 +56,18 @@ export default function Noticias() {
     setSelectedFilter(filter);
     setCurrentPage(1);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setNews(await NewsService.getNews());
+      } catch (error) {
+        console.error("Erro ao carregar eventos:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <section className="pt-24 sm:pt-28 md:pt-32 pb-16 px-4 sm:px-6 md:px-8 lg:px-16 max-w-[1400px] mx-auto w-full">
@@ -79,7 +105,7 @@ export default function Noticias() {
       </div>
 
       {/* Lista de notícias */}
-      <NoticiasList noticias={currentNoticias} />
+      <NoticiasList news={currentNoticias} />
 
       {/* Paginação */}
       <Pagination

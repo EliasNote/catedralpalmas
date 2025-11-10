@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
 			},
 		],
 		qualities: [100],
+		domains: ["jjfwftwbsamypgnubqhz.supabase.co"],
 	},
 };
 

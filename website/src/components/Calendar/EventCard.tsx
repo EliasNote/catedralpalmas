@@ -1,5 +1,5 @@
 import { EVENTS_COLOR } from "@/constants";
-import { EventWithRelations } from "@/types/supabase";
+import { EventWithRelations } from "@/types/databasetypes";
 import { ScheduleEventType } from "@/types";
 import React from "react";
 import { FiClock, FiMapPin } from "react-icons/fi";

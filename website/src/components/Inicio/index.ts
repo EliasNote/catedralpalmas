@@ -1,3 +1,3 @@
 export { default as Hero } from "./Hero";
 export { default as Horarios } from "./Horarios";
-export { default as Noticias } from "./Noticias";
+export { default as News } from "./News";
