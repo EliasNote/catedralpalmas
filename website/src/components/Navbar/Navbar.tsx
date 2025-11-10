@@ -26,7 +26,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
-  const isShrunk = pathname === "/" && scrolled;
+  const isShrunk = pathname !== "/" || scrolled;
 
   return (
     <motion.nav
