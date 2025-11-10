@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { formatDate } from "@/config/locale";
 import ReactMarkdown from "react-markdown";
+import Link from "next/link";
 
 export default async function NewsDetail({
   params,
@@ -94,12 +95,12 @@ export default async function NewsDetail({
 
       {/* Voltar */}
       <div className="mt-12">
-        <a
+        <Link
           href="/news"
           className="inline-flex items-center text-blue-600 hover:text-blue-800"
         >
           ← Voltar para notícias
-        </a>
+        </Link>
       </div>
     </article>
   );
